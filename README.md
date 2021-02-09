@@ -5,8 +5,7 @@
 [![Version](https://anaconda.org/e3sm/e3sm_diags/badges/version.svg)](https://anaconda.org/e3sm/e3sm_diags)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.1009157.svg)](https://doi.org/10.5281/zenodo.1009157)
 [![Docker Badge](https://images.microbadger.com/badges/version/e3sm/e3sm_diags.svg)](https://hub.docker.com/r/e3sm/e3sm_diags/)
-
-
+![GitHub Actions CI/CD](https://github.com/E3SM-Project/e3sm_diags/workflows/CI%2FCD%20Workflow/badge.svg)
 
 ## Table of Contents
 1. [Documentation](#doc)

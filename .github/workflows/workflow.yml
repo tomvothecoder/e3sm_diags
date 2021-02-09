@@ -1,0 +1,67 @@
+name: CI/CD Workflow
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+env:
+  UVCDAT_ANONYMOUS_LOG: False
+
+jobs:
+  build:
+    name: ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ["ubuntu-latest", "macos-latest"]
+    defaults:
+      run:
+        shell: bash -l {0}
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Cache Conda
+        uses: actions/cache@v2
+        env:
+          # Increase this value to reset cache if etc/example-environment.yml has not changed
+          CACHE_NUMBER: 0
+        with:
+          path: ~/conda_pkgs_dir
+          key: ${{ runner.os }}-conda-${{ env.CACHE_NUMBER }}-${{
+            hashFiles('conda/e3sm_diags_env_testing.yml') }}
+
+      - name: Set up Conda Environment
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          activate-environment: e3sm_diags
+          environment-file: conda/e3sm_diags_env_testing.yml
+          channel-priority: strict
+          python-version: 3.7
+          auto-update-conda: true
+          use-only-tar-bz2: true # IMPORTANT: This needs to be set for caching to work properly!
+
+      - name: Additional Conda Environment Config
+        run: |
+          conda config --set anaconda_upload no
+
+      - name: Install Dependencies
+        run: pip install .
+
+      - name: Run Tests
+        run: |
+          bash tests/test.sh
+
+  release:
+    if: ${{ github.ref == 'master' && github.event.action != 'pull_request'}}
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Nightly Conda Upload
+        run: |
+          conda install conda-build=2.1.17
+          conda install anaconda-client
+          cd conda
+          bash nightly_conda_upload.sh
