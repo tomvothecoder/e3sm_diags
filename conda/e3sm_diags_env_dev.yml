@@ -23,7 +23,11 @@ dependencies:
   - flake8-isort=4.0.0
   - mypy=0.790
   - pre-commit=2.10.1
+  - sphinx=3.5.1
+  - sphinx_rtd_theme=0.5.1
   # Testing
   - dask
   - scipy
+  - pip:
+      - sphinx-multiversion==0.2.4
 prefix: /opt/miniconda3/envs/e3sm_diags_env_dev
