@@ -79,9 +79,9 @@ def plot_panel(n, fig, proj, var, clevels, cmap, title, parameters, stats=None):
     region = regions_specs[region_str]
     global_domain = True
     full_lon = True
-    if "domain" in region.keys():  # type: ignore
+    if "domain" in region.keys():
         # Get domain to plot
-        domain = region["domain"]  # type: ignore
+        domain = region["domain"]
         global_domain = False
     else:
         # Assume global domain

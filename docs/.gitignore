@@ -1,0 +1,8 @@
+# Temporary files
+*~
+
+# CI/CD will handle build and deployment
+build
+
+.idea
+__pycache__/
