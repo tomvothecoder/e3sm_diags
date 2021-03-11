@@ -164,5 +164,5 @@ texinfo_documents = [
 
 # -- Options sphinx-multiversion -------------------------------------------
 smv_tag_whitelist = r"^tags\/v\d+\.\d+.\d+$"  # Include tags like "tags/v2.5.0"
-# smv_branch_whitelist = r"^master$"  # Include only master
+smv_branch_whitelist = r"^master$"  # Include only master
 smv_remote_whitelist = r"^(origin)$"  # Use branches from origin
