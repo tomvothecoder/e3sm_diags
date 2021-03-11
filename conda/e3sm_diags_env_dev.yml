@@ -28,4 +28,6 @@ dependencies:
   # Testing
   - dask
   - scipy
+  - pip:
+      - sphinx-multiversion==0.2.4
 prefix: /opt/miniconda3/envs/e3sm_diags_env_dev
