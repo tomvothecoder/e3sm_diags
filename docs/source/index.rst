@@ -13,7 +13,8 @@ This documentation reflects the ``master`` branch of E3SM Diags. For documentati
 
 * `v2.4.0 <https://e3sm-project.github.io/e3sm_diags/docs/html-v2-4-0/index.html>`_
 * `v2.3.0 <https://e3sm-project.github.io/e3sm_diags/docs/html-v2-3-0/index.html>`_
-* `v2.2.0 <https://e3sm-project.github.io/e3sm_diags/docs/html-v2-2-0/index.html>`_
+
+Older v2 releases are compatible with the available v2 docs.
 
 .. toctree::
    :maxdepth: 2
