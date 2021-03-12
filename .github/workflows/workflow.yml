@@ -125,18 +125,18 @@ jobs:
         run: |
           # gh-pages branch must already exist
           git clone https://github.com/E3SM-Project/e3sm_diags.git --branch gh-pages --single-branch gh-pages
-          
-          rm -r *
-
-          mkdir -p gh-pages
-          cp -r docs/_build gh-pages/
-          # Old builds must be siblings to current build to correctly load static content such as images and custom fonts
-          cp -r docs/_build_old gh-pages/
 
           cd gh-pages
+          rm -r *
+
           touch .nojekyll
           # Add index.html to point to `master` branch automatically
           printf '<meta http-equiv="refresh" content="0; url=./_build/html/master/index.html" />' >> index.html
+
+          cp -r ../docs/_build .
+          # Old builds must be siblings to current build to correctly load static content such as images and custom fonts
+          cp -r ../docs/_build_old .
+
 
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
