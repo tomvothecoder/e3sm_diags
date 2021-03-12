@@ -121,7 +121,7 @@ jobs:
           cd docs
           sphinx-multiversion source _build/html
 
-      - name: Copy Sphinx Docs
+      - name: Copy Docs and Commit
         run: |
           # gh-pages branch must already exist
           git clone https://github.com/tomvothecoder/e3sm_diags.git --branch gh-pages --single-branch gh-pages
@@ -136,9 +136,6 @@ jobs:
           cp -r ../docs/_build .
           # Old builds must be siblings to current build to correctly load static content such as images and custom fonts
           cp -r ../docs/_build_old .
-
-      - name: Commit Doc Changes
-        run: |
 
           git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
