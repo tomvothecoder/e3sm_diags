@@ -17,7 +17,7 @@ env:
 
 jobs:
   pre-commit-hooks:
-    if: github.event.action == 'push' || github.event.action == 'pull_request'
+    if: ${{github.event.action
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
@@ -36,7 +36,7 @@ jobs:
         uses: pre-commit/action@v2.0.0
 
   build:
-    if: ${{ github.event.action == 'push' || github.event.action == 'pull_request'}}
+    if: ${{ github.event_name == 'push' || github.event_name == 'pull_request'}}
     strategy:
       fail-fast: false
       matrix:
@@ -85,7 +85,7 @@ jobs:
           bash tests/test.sh
 
   publish-docs:
-    if: ${{ github.event.action == 'push' || github.event.action == 'release'}}
+    if: ${{ github.event_name == 'push' || github.event_name == 'release'}}
     needs: [pre-commit-hooks, build]
     runs-on: ubuntu-latest
     defaults:
@@ -158,7 +158,7 @@ jobs:
           force: true
 
   publish-to-anaconda:
-    if: github.event.action == 'release'
+    if: ${{ github.event_name == 'release' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     defaults:
