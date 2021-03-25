@@ -17,7 +17,7 @@ env:
 
 jobs:
   pre-commit-hooks:
-    if: ${{ github.event.action == 'push' || github.event.action == 'pull_request'}}
+    if: github.event.action == 'push' || github.event.action == 'pull_request'
     runs-on: ubuntu-latest
     timeout-minutes: 2
     steps:
