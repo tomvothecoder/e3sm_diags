@@ -11,7 +11,7 @@ Version Control
 
 The repository uses a fork-based Git workflow with tag releases.
 
-.. figure:: git-flow.svg
+.. figure:: _static/git-flow.svg
    :alt: Git Flow Diagram
 
 Guidelines
@@ -39,7 +39,7 @@ The repository uses the ``pre-commit`` package to manage pre-commit hooks.
 These hooks help enforce quality assurance standards and identify simple issues
 at the commit level before submitting code reviews.
 
-.. figure:: pre-commit-flow.svg
+.. figure:: _static/pre-commit-flow.svg
    :alt: Pre-commit Flow Diagram
 
    ``pre-commit`` Flow
