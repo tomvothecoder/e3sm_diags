@@ -99,7 +99,7 @@ jobs:
           bash tests/test.sh
 
   publish-docs:
-    needs: [check-jobs-to-skip, pre-commit-hooks, build]
+    needs: check-jobs-to-skip
     if: ${{ needs.check-jobs-to-skip.outputs.should_skip != 'true' && github.event_name == 'push' }}
     runs-on: ubuntu-latest
     defaults:
