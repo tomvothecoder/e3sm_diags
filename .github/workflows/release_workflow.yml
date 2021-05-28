@@ -116,12 +116,14 @@ jobs:
         # TODO: Change from e3ms channel (api token) to conda-forge
         env:
           ANACONDA_API_TOKEN: ${{ secrets.ANACONDA_TOKEN }}
-          ANACONDA_CHANNEL_LABEL: "main"
         run: |
-          if [[ noarch/*.tar.bz2 == *"rc"*.tar.bz2 ]];
-          then
-            export ANACONDA_CHANNEL_LABEL="rc"
-          fi;
+          label="main"
 
-          echo Uploading to conda-forge with \'$ANACONDA_CHANNEL_LABEL\' label
-          anaconda upload --label $ANACONDA_CHANNEL_LABEL noarch/*.tar.bz2 --force
+          for file in noarch/*.tar.bz2; do
+            if [[ "$file" == noarch/*"rc"*.tar.bz2 ]]; then
+               label="rc"
+            fi
+          done
+
+          echo Uploading to conda-forge with \'$label\' label
+          anaconda upload --label $label ../noarch/*.tar.bz2 --force
