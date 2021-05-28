@@ -123,4 +123,5 @@ jobs:
             export ANACONDA_CHANNEL_LABEL="rc"
           fi;
 
+          echo Uploading to conda-forge with \'$ANACONDA_CHANNEL_LABEL\' label
           anaconda upload --label $ANACONDA_CHANNEL_LABEL noarch/*.tar.bz2 --force
