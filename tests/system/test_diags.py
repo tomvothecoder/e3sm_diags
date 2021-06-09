@@ -59,7 +59,7 @@ def count_images(directory):
     for root, _, filenames in os.walk(directory):
         # download_data.py won't download files in the viewer directory
         # because the webpage is more than a simple page of links.
-        if not "viewer" in root:
+        if "viewer" not in root:
             for file in filenames:
                 if file.endswith(".png"):
                     images.append(file)
