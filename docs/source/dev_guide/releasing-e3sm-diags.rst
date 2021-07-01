@@ -31,6 +31,27 @@ Bumping the Version
         # --no-tag is required since tagging is handled in "Releasing on GitHub"
         tbump <version> --no-tag
 
+        :: Bumping from 2.5.0 to 2.6.0
+        => Would patch these files
+        - setup.py:113 version="2.5.0",
+        + setup.py:113 version="2.6.0",
+        - acme_diags/__init__.py:4 __version__ = "v2.5.0"
+        + acme_diags/__init__.py:4 __version__ = "v2.6.0"
+        - conda/meta.yaml:2 {% set version = "2.5.0" %}
+        + conda/meta.yaml:2 {% set version = "2.6.0" %}
+        - conda/e3sm_diags_env.yml:22 - e3sm_diags=2.5.0
+        + conda/e3sm_diags_env.yml:22 - e3sm_diags=2.6.0
+        - Dockerfile:8 LABEL version="2.5.0"
+        + Dockerfile:8 LABEL version="2.6.0"
+        - tbump.toml:5 current = "2.5.0"
+        + tbump.toml:5 current = "2.6.0"
+        => Would run these git commands
+        $ git add --update
+        $ git commit --message Bump to 2.6.0
+        $ git push origin v2.6.0
+        :: Looking good? (y/N)
+        >
+
 4. Create a pull request to the main repo and merge it.
 
 .. _github-release:
