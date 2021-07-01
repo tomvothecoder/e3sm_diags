@@ -5,11 +5,11 @@ How to Prepare a Release
 
 In this guide, we'll cover:
 
-* bumping the version for a release
-* releasing on Github
-* releasing on Anaconda
-* creating a new version of the documentation
-* building and releasing the Docker image
+* Bumping the Version
+* Releasing on Github
+* Releasing on Anaconda
+* Creating a New Version of the Documentation
+* Building and releasing the Docker image
 
 Bumping the Version
 -------------------
@@ -43,14 +43,7 @@ Releasing on GitHub
 3. Set `Release title` to ``v<version>``, **including the "v"**.
 4. Use `Describe this release` to summarize the changelog.
 
-  * You can scroll through `E3SM Diags commits <https://github.com/E3SM-Project/e3sm_diags/commits/master>`_ to see what features have been added recently.
-
-.. figure:: ../_static/releasing-e3sm-diags/github_release.png
-    :figwidth: 100 %
-    :align: center
-    :target: ../_static/releasing-e3sm-diags/github_release.png
-
-    An example of a completed page to release the code
+   * You can scroll through `zppy commits <https://github.com/E3SM-Project/e3sm_diags/commits/main>`_ for a list of changes.
 
 5. If this version is a release candidate (``<version>`` appended with ``rc``), checkmark `This is a pre-release`.
 6. Click `Publish release`.
@@ -59,17 +52,9 @@ Releasing on GitHub
 Releasing On Anaconda
 ---------------------
 
-#. Be sure to have already completed :ref:`Releasing on GitHub <github-release>`. This triggers the CI/CD release workflow that handles Anaconda releases.
-#. Wait until the CI/CD build is successful. You can view all workflows at `All Workflows <https://github.com/E3SM-Project/e3sm_diags/actions>`_.
-#. Check the https://anaconda.org/e3sm/e3sm_diags page to view the newly updated package.
-
-   * Release candidates are assigned the ``e3sm_dev`` label
-   * Production releases are assigned the ``main`` label
-
-#. Notify the maintainers of the unified E3SM environment about the new release on the `E3SM Confluence site <https://acme-climate.atlassian.net/wiki/spaces/WORKFLOW/pages/129732419/E3SM+Unified+Anaconda+Environment>`_.
-
-   * Be sure to only update the ``e3sm_diags`` version number in the correct version(s) of the E3SM Unified environment. This is almost certainly one of the versions listed under “Next versions”.
-   * If you are uncertain of which to update, leave a comment on the page asking.
+1. Be sure to have already completed :ref:`Releasing on GitHub <github-release>`.
+2. Follow the steps `here <https://github.com/conda-forge/e3sm_diags-feedstock#updating-e3sm_diags-feedstock>`_. for updating the ``e3sm_diags-feedstock``.
+3. The package will be released on ``conda-forge``.
 
 Creating a New Version of the Documentation
 -------------------------------------------
